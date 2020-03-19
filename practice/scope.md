@@ -392,7 +392,10 @@ const divide = (a, b) => {
 };
 
 let allFunctions = [add, sub, multiply, divide];
-
+allFunctions.forEach(val => {
+  let res = val(3,2);
+  console.log(res);
+});
 ```
 
 
