@@ -8,6 +8,7 @@ const lastName = "Stark";
 var knownAs = "no one";
 
 console.log(window.firstName, window.lastName, window.knownAs);
+undefined undefined no one
 ```
 
 2. Guess the output:
@@ -22,6 +23,7 @@ function fullName(a, b) {
 }
 
 console.log(window.fullName(firstName, lastName));
+AryaStark
 ```
 
 3. Make a Execution Context Diagram for the following JS and write the output.
@@ -34,7 +36,7 @@ var one = addOne(0);
 var two = addOne(1);
 console.log(one, two);
 ```
-
+1 2
 4. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -45,7 +47,7 @@ fucntion addOne(num){
 var two = addOne(1);
 console.log(one, two);
 ```
-
+1 2
 5. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -56,7 +58,7 @@ fucntion addOne(num){
 var two = addOne(1);
 console.log(two);
 ```
-
+1 2
 6. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -91,6 +93,7 @@ function isAwesome() {
 }
 isAwesome();
 ```
+undefined
 
 9. What will be the output of the following
 
@@ -104,7 +107,7 @@ function isAwesome() {
 }
 isAwesome();
 ```
-
+true
 10. What will be the output of the following
 
 ```js
@@ -117,7 +120,7 @@ function isAwesome() {
 }
 isAwesome();
 ```
-
+undefined
 11. What will be the output of the following
 
 ```js
@@ -127,11 +130,19 @@ var knownAs = "no one";
 
 function fullName(a, b) {
   return a + b;
+}function isAwesome() {
+  let awesome;
+  if (false) {
+    awesome = true;
+  }
+  console.log(awesome);
 }
+isAwesome();
 const name = fullName(firstName, lastName);
 console.log(name);
 ```
-
+undefined
+AryaStark
 12. What will be the output of the following
 
 ```js
@@ -145,7 +156,7 @@ function fullName(a, b) {
 const name = fullName(firstName, lastName);
 console.log(name);
 ```
-
+AryaStark
 13. Guess the output of the code below with a reason.
 
 ```js
@@ -156,7 +167,8 @@ sayHello();
 
 console.log(name);
 ```
-
+Error
+Because the scope of name is not valid outside function sayHello()
 14. Guess the output of the code below with a reason.
 
 ```js
@@ -165,7 +177,8 @@ if (true) {
 }
 console.log(name);
 ```
-
+Arya Stark
+scope of name is global and can be used outside the if block.
 15. Guess the output of the code below with a reason.
 
 ```js
@@ -174,6 +187,8 @@ if (true) {
 }
 console.log(name);
 ```
+Arya Stark
+Scope of name is global since a variable declared inside the  block of if 
 
 16. Guess the output of the code below with a reason.
 
@@ -183,7 +198,8 @@ for (var i = 0; i < 20; i++) {
 }
 console.log(i);
 ```
-
+20
+value of i is 20 after the for loop execution
 17. Guess the output of the code below with a reason.
 
 ```js
@@ -192,7 +208,8 @@ for (let i = 0; i < 20; i++) {
 }
 console.log(i);
 ```
-
+20
+value of i is 20 after the for loop execution
 18. Guess the output of the code below with a reason.
 
 ```js
@@ -221,7 +238,7 @@ function sample() {
   console.log(username);
 }
 ```
-
+John Snow
 21. Guess the output and the reason behind that.
 
 ```js
@@ -232,7 +249,7 @@ function sample() {
   console.log(username);
 }
 ```
-
+John Snow
 22. Guess the output and the reason behind that.
 
 ```js
@@ -245,7 +262,9 @@ function sample() {
   console.log(username, "second");
 }
 ```
-
+John Snow
+John Snow second
+scope of username is valid outside if block since it has been declared using var
 23. Guess the output and the reason behind that.
 
 ```js
@@ -258,7 +277,9 @@ function sample() {
   console.log(username, "second");
 }
 ```
-
+John Snow first
+Arya stark second
+scope of username initialised inside if block is only valid within if block
 24. Guess the output and the reason behind that.
 
 ```js
@@ -271,6 +292,9 @@ function sample(...args) {
 
 sample("First", "Second", "Third");
 ```
+Hello I am First
+Hello I am Second
+Hello I am Third
 
 25. Guess the output and the reason behind that.
 
@@ -282,8 +306,11 @@ function sample(...args) {
   }
 }
 
-sample("First", "Second", "Third");
+sample("First", "Second", "Third"); 
 ```
+Hello I am First
+Hello I am Second
+Hello I am Third
 
 26. Guess the output and the reason behind that.
 
@@ -304,14 +331,14 @@ if (true) {
 function outer() {
   let movie = "Mad Max: Fury Road";
   function inner() {
-    console.log("I love this movie called ${movie.toUpperCase()}");
+    console.log(`I love this movie called ${movie.toUpperCase()}`);
   }
   inner();
 }
 
 outer();
 ```
-
+I love this movie called MAD MAX: FURY ROAD
 28. Guess the output and the reason behind that.
 
 ```js
@@ -319,14 +346,15 @@ function outer() {
   let movie = "Mad Max: Fury Road";
   function inner() {
     let movie = "Before Sunrise";
-    console.log("I love this movie called ${movie.toUpperCase()}");
+    console.log(`I love this movie called ${movie.toUpperCase()}`);
   }
   inner();
 }
 
 outer();
 ```
-
+I love this movie called BEFORE SUNRISE
+inner function will look for movie inside it's own memory before bubbling out
 29. Guess the output and the reason behind that.
 
 ```js
@@ -336,7 +364,7 @@ function outer() {
     let movie = "Before Sunrise";
     function extraInner() {
       let movie = "Gone Girl";
-      console.log("I love this movie called ${movie.toUpperCase()}");
+      console.log(`I love this movie called ${movie.toUpperCase()}`);
     }
     extraInner();
   }
@@ -345,7 +373,8 @@ function outer() {
 
 outer();
 ```
-
+I love this movie called GONE GIRL
+inner function will look for movie inside it's own memory before bubbling out
 30. Execute all the functions inside `allFunctions` variable using any loop. (Hint: use for of loop functions are object)
 
 ```js
@@ -363,7 +392,9 @@ const divide = (a, b) => {
 };
 
 let allFunctions = [add, sub, multiply, divide];
+
 ```
+
 
 31. You have to pass 10 and 12 as initial value and find the final output when you pass the return value of one function as an input to the next function in the array `allFunctions`.
 

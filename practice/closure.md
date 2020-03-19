@@ -4,15 +4,27 @@
 
 ```js
 // Your code goes here
+function multiplyBy(num) {
+    function double(number) {
+        return num*number;
+    }
+return double;
+}
 
 const double = multiplyBy(2);
 const final = double(15); // final should be 30
-```
+``` 
 
 2. Write a function called `fullName` that takes a string `firstName` as an argument and returns a function. Returned function takes another string `lastName` as an argument and returns full name.
 
 ```js
 // Your code goes here
+function fullName(str) {
+  function lastName(string){
+    return str+string;
+  }
+  return lastName;
+}
 
 const name = fullName("Will");
 const final = name("Smith"); // final should be "Will Smith"
@@ -22,7 +34,10 @@ const final = name("Smith"); // final should be "Will Smith"
 
 ```js
 function isInBetween(a, b) {
-  // your code goes here
+  function isChild(c) {
+    if(a<c&&c<b)? true: false;
+  }
+  return isChild;
 }
 
 const isChild = isInBetween(10, 100);
@@ -35,7 +50,10 @@ isChild(103); // false
 
 ```js
 function letsWishThem(greeting) {
-  // your code goes here
+  function callWith(message) {
+    return greeting + message;
+  }
+  return inner;
 }
 
 const callWithHey = letsWishThem("Hey");
@@ -48,7 +66,11 @@ callWithHello("How Are You?"); // Hello How Are You?
 
 ```js
 function addGame(gameName) {
-  // your code goes here
+  var i = 1;
+  function score(){
+    return `Your score of ${gameName} is ${i++}`;
+  }
+  return score;
 }
 
 // Output
@@ -64,14 +86,19 @@ cricket(); // Your score of Cricket is 2
 
 ```js
 function getCard(suit) {
-  // your code goes here
+  var randomCard = [2,3,4,5,6,7,8,9,10,"J", "Q", "K", "A"];
+  function card() {
+    index = Math.floor(Math.random()*randomCard.length);
+    return `card is : ${randomCard[index]} ${suit}`;
+  }
+  return card;
 }
 
 // Output
-const randomClub = addGame("Club");
+const randomClub = getCard("Club");
 randomClub(); // Card is: 6 Club
 randomClub(); // Card is: A Club
-const randomSpade = addGame("Spade");
+const randomSpade = getCard("Spade");
 randomSpade(); // Card is: 6 Spade
 randomSpade(); // Card is: A Spade
 ```

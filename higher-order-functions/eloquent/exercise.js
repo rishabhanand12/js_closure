@@ -6,6 +6,8 @@ let arrays = [[1, 2, 3], [4, 5], [6]];
 
 // Challenge 2. Your own loop
 // Your code here.
+function loop(n, testFunc, updateFunc, bodyFunc) {
+}
 
 loop(3, n => n > 0, n => n - 1, console.log);
 // → 3
